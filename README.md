@@ -1,74 +1,84 @@
 # Claude Code Inspector
 
-One command, one HTML file — see everything Claude Code knows, can do, and should improve.
+一条命令，一个 HTML 文件 — 看清你的 Claude Code 能做什么、不能做什么、哪里该优化。
 
-Zero dependencies. Runs locally. All secrets auto-masked.
+零依赖，本地运行，密钥自动脱敏。
 
-## Install
+![全览首页](screenshot-overview.jpg)
+
+## 安装
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/pxx-design/claude-code-inspector/main/install.sh | bash
 ```
 
-Or run directly:
+或者直接运行：
 
 ```bash
 node path/to/generate-dashboard.js
 ```
 
-Both generate `claude-code-inspector.html` in your current directory. Open it in any browser.
+运行后会在当前目录生成 `claude-code-inspector.html`，用浏览器打开即可。
 
-## What you get
+> 不会用命令行？在 Claude Code 里直接说「帮我运行一下 node ~/Desktop/generate-dashboard.js」就行。
 
-### Capability Map
-10 capabilities in a Bento grid — instantly see what Claude can and can't do in your project:
-- **Core**: read/write files, run terminal commands
-- **Knowledge**: project rules (CLAUDE.md), cross-session memory
-- **Connect**: web search, browser automation, team tools (Feishu/Slack/Notion)
-- **Extend**: plugins, hooks, auto-commit
+## 你会得到什么
 
-### Health Score
-A 0–100 score with findings sorted by severity. Each finding is expandable with a one-line fix suggestion.
+### 配置全景 + 健康评分
 
-### Resource Inventory
-Collapsible sections for all 9 dimensions:
+一眼看到 9 个维度的配置数量，以及 0-100 的健康评分和等级。
 
-| Section | What it shows |
-|---------|---------------|
-| Skills | Project and user-level skills with metadata |
-| Plugins | Installed plugins with enabled/blocked status |
-| MCP Servers | Configured servers, commands, env keys |
-| Hooks | Event-based hooks with matchers |
-| Agents | Expert roles from plugins, project, and user level |
-| Commands | Slash commands with descriptions |
-| Memory | CLAUDE.md, memory files with previews |
-| Settings | Git config, permissions, environment variables |
+### 能力地图
 
-### Design
-- Claude brand palette (Pampas background, terra cotta accents)
-- Serif display type, system sans-serif body
-- WCAG AA compliant contrast ratios
+10 项能力按重要程度分层展示，一眼看出哪些已开启、哪些还没配置：
 
-## Security
+- **核心**：项目规范（CLAUDE.md）、跨会话记忆
+- **扩展**：搜索互联网、操作浏览器、连接团队工具、社区插件
+- **基础**：读写文件、执行终端、自动化工作流、自动提交
 
-All secrets (API keys, tokens, passwords) are automatically masked. The generated HTML is safe to share.
+### 深度体检
 
-## Requirements
+30+ 项检查，每条问题都能展开看说明 + 修复建议，可自动修复的条目带「复制修复命令」按钮 — 点一下，粘贴到终端就能修好。
+
+![一键修复](screenshot-fix.jpg)
+
+### 资源详情
+
+9 个可折叠面板，展示所有配置的详细信息：
+
+| 板块 | 内容 |
+|------|------|
+| Skills | 项目级、用户级、插件提供的技能 |
+| Plugins | 已安装插件及启用/屏蔽状态 |
+| MCP Servers | 已配置的外部工具服务 |
+| Hooks | 事件触发的自动化流程 |
+| Agents | 来自插件、项目、用户的专家角色 |
+| Commands | 自定义斜杠指令 |
+| 记忆 | CLAUDE.md 和 memory 文件预览 |
+| 设置 | 权限规则、环境变量、Git 配置 |
+
+![详情信息](screenshot-detail.jpg)
+
+## 安全
+
+所有 API 密钥、Token、密码在报告中自动打码。生成的 HTML 可以安全分享。
+
+## 要求
 
 - Node.js >= 16
 
-## How it works
+## 原理
 
-A single Node.js script (~2000 lines, zero dependencies) that:
+一个单文件 Node.js 脚本（约 2000 行，零依赖）：
 
-1. Scans `~/.claude/` and `.claude/` for all config files
-2. Detects 10 capabilities from MCP servers, plugins, permissions, and settings
-3. Runs 30+ health checks across 9 dimensions
-4. Generates a self-contained HTML dashboard
+1. 扫描 `~/.claude/` 和 `.claude/` 下的所有配置文件
+2. 检测 10 项能力（MCP、插件、权限、设置）
+3. 运行 30+ 条健康检查规则
+4. 生成自包含的 HTML 仪表盘
 
-No data leaves your machine.
+所有数据不离开你的电脑。
 
-## Uninstall
+## 卸载
 
 ```bash
 rm -rf ~/.claude/skills/inspector/
