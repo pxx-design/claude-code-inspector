@@ -1,0 +1,30 @@
+{
+  "name": "claude-code-inspector",
+  "version": "1.0.0",
+  "description": "One-command health check for your Claude Code setup. Scans all config and generates a visual dashboard.",
+  "bin": {
+    "claude-code-inspector": "./skill/scripts/generate-dashboard.js"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "inspector",
+    "health-check",
+    "dashboard",
+    "config-audit",
+    "mcp",
+    "ai-tools"
+  ],
+  "author": "Shona Pei",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pxx-design/claude-code-inspector.git"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "files": [
+    "skill/scripts/generate-dashboard.js"
+  ]
+}
