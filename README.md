@@ -6,21 +6,28 @@
 
 ![全览首页](screenshot-overview.jpg)
 
-## 安装
+## 使用方式
+
+### 方式一：下载运行（推荐）
+
+1. 点击本页绿色 **Code** 按钮 → **Download ZIP**，解压到任意位置
+2. 打开 Claude Code，说一句：
+
+```
+帮我运行一下 node ~/Downloads/claude-code-inspector-main/skill/scripts/generate-dashboard.js
+```
+
+（路径换成你实际解压的位置）
+
+3. 当前目录会生成 `claude-code-inspector.html`，双击打开就能看到报告
+
+### 方式二：一键安装（需终端能访问 GitHub）
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/pxx-design/claude-code-inspector/main/install.sh | bash
 ```
 
-或者直接运行：
-
-```bash
-node path/to/generate-dashboard.js
-```
-
-运行后会在当前目录生成 `claude-code-inspector.html`，用浏览器打开即可。
-
-> 不会用命令行？在 Claude Code 里直接说「帮我运行一下 node ~/Desktop/generate-dashboard.js」就行。
+安装后在 Claude Code 里输入 `/inspect` 即可生成报告。
 
 ## 你会得到什么
 
